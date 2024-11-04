@@ -1,0 +1,122 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #d1cccc;
+}
+
+.container {
+    background-color: #d1cccc;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+#scroll-container {
+    max-height: 300px; 
+    min-width: 700px;
+    overflow-y: auto;   
+    /*border: 5px solid #ccc; */
+    padding: 10px;
+}
+
+
+/* Stiluri pentru card-uri */
+.add-word-card, .dictionary-display, .search-card, .search-result-card {
+    background-color: #d6e3f2;
+    box-shadow: 0 14px 14px rgb(171, 186, 231);
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 1000px; 
+    min-width: 300px; 
+}
+
+/* Stiluri pentru card-body-uri */
+.add-word-card-body, .search-card-body, .dictionary-display-card-body, .search-result-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Stiluri pentru hr */
+#word-definition-title-hr, #add-word-title-hr, #dictionary-entries-title-hr, #search-result-title-hr {
+    border: 0;
+    border-top: 3px solid black; 
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Stiluri pentru h1 */
+#word-definition-title, #add-word-title, #dictionary-entries-title, #search-result-title {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Stiluri pentru input și textarea */
+.input-key-word, .input-explanation {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Stiluri pentru butoane */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #2391e6;
+    cursor: pointer;
+}
+
+#dictionary-keyword {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Stiluri pentru search input */
+#dictionar-search {
+    width: 100%;
+    padding: 5px;
+    border-radius: 8%;
+    margin-right: 10px;
+    background-color: rgb(202, 214, 219);
+}
+
+#dictionar-search::placeholder {
+    font-weight: bold;
+    color: #888;
+}
+
+/* Stiluri responsive */
+@media (max-width: 600px) {
+    .add-word-card-body, .search-card-body, .dictionary-display-card-body {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    #dictionar-search {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+        text-align: center;
+    }
+}

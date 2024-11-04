@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="Problem 3" content="Warming personal project / Dictionary">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="word-definition-title">Word Definition</h1>
+        <hr id="word-definition-title-hr">
+
+        <div class="add-word-card card" id="add-word-card">
+            <div class="add-word-card-body card-body">
+                <h1 id="add-word-title">Add a word to the dictionary.</h1>
+                <hr id="add-word-title-hr">
+                <div class="input-key-word">
+                    <input type="text" class="form-control short-input" placeholder="Please enter the word:">
+                </div>
+                <div class="input-explanation mt-3">
+                    <textarea class="form-control long-input" placeholder="Please enter the explanation."></textarea>
+                </div>
+                <div class="button-add">
+                    <button type="button" id="btn-add" onclick="validateAndExtractInputs()">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dictionary-display card">
+            <div class="dictionary-display-card-body card-body">
+                <h2 id="dictionary-entries-title">Dictionary Entries</h2>
+                <hr id="dictionary-entries-title-hr">
+                <div id="scroll-container">
+                    <ul id="dictionary-list"></ul> 
+                </div>
+            </div>
+        </div>
+
+        <div class="search-card card">
+            <div class="search-card-body card-body">
+                <input type="search" id="dictionar-search" placeholder="Enter the word...">
+                <button type="button" id="btn-search" onclick="searchWordInDictionary()"> Search</button>
+            </div>
+        </div>
+
+        <div class="search-result-card card">
+            <div class="search-result-card-body card-body">
+                <h2 id="search-result-title">Search Result</h2>
+                <hr id="search-result-title-hr">
+                <div id="search-result"></div>
+            </div>
+        </div>
+        
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
