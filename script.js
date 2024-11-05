@@ -1,78 +1,67 @@
 const dictionary = [];
 
-function validateAndExtractInputs() {
-    const wordInput = document.querySelector(".input-key-word input");
-    const descriptionInput = document.querySelector(".input-explanation textarea");
+function validateAndAddWord() {
+    const wordInput = document.querySelector(".input-word").value.trim();
+    const descInput = document.querySelector(".input-desc").value.trim();
+    const errorMsg = document.getElementById('add-error-msg');
 
-    if (wordInput.value.trim() === "" && descriptionInput.value.trim() === "") {
-        //console.log("Both fields are empty. Please enter a word and a description.");
-        alert("Both fields are empty. Please enter a word and a description.");
+    errorMsg.textContent = "";
+    if (wordInput === "" || descInput === "") {
+        errorMsg.textContent = 'Please fill in both fields.';
         return;
     }
-
-    if (wordInput.value.trim() === "") {
-        //console.log("The word field is empty. Please enter a word.");
-        alert("The word field is empty. Please enter a word.");
-        return;
-    }
-
-    if (descriptionInput.value.trim() === "") {
-        //console.log("The description field is empty. Please enter a description.");
-        alert("The description field is empty. Please enter a description.");
-        return;
-    }
-    const keyWord = wordInput.value.trim();
-    const definition = descriptionInput.value.trim();
-    //console.log("Keyword: ", keyWord);
-    //console.log("Definition: ", definition);
-
-    addWordToDictionary(keyWord, definition);
-    wordInput.value = "";
-    descriptionInput.value = "";
+    addWord(wordInput, descInput);
+    document.querySelector(".input-word").value = "";
+    document.querySelector(".input-desc").value = "";
 }
 
-function addWordToDictionary(keyWord, definition) {
-    if (dictionary.some(entry => entry.word === keyWord)) {
-        console.log("The word is already in the dictionary.");
-        alert("The word is already in the dictionary.");
+function addWord(wordInput, descInput) {
+    const entriesErrorMsg = document.getElementById('word-list-error-msg');
+    entriesErrorMsg.textContent = "";
+    if (dictionary.some(entry => entry.word === wordInput)) {
+        entriesErrorMsg.textContent = 'This word is already in the list.';
     } else {
-        const wordEntry = {word: keyWord, description: definition};
-        dictionary.push(wordEntry);
-        //console.log("Congratulations, you have successfully added a new word to the dictionary!");
-        //alert("Congratulations, you have successfully added a new word to the dictionary!");
-        displayDictionary();
+        dictionary.push({word: wordInput, description: descInput});
+        displayEntries();
     }
 }
 
-function displayDictionary() {
-    const dictionaryList = document.getElementById('dictionary-list');
-    dictionaryList.innerHTML = "";
-    //console.log("Displaying dictionary:", dictionary);
+function displayEntries() {
+    const entryList = document.getElementById('word-list');
+    entryList.innerHTML = "";
     dictionary.forEach(entry => {
         const listItem = document.createElement("li");
-        const keyword = entry.word + ": ";
-        listItem.innerHTML = `<span id="dictionary-keyword">${keyword}</span>${entry.description}`;
-        dictionaryList.appendChild(listItem);
-        const hr = document.createElement("hr");
-        dictionaryList.appendChild(hr);
+        const wordSpan = document.createElement("span");
+        wordSpan.textContent = entry.word;
+        listItem.appendChild(wordSpan);
+        listItem.appendChild(document.createTextNode(`: ${entry.description}`));
+        entryList.appendChild(listItem);
+        entryList.appendChild(document.createElement("hr"));
     });
 }
 
-function searchWordInDictionary() {
-    const searchInput = document.getElementById('dictionar-search');
-    const searchTerm = searchInput.value.trim();
-    const searchResultDiv = document.getElementById('search-result');
-    searchResultDiv.innerHTML = "";
-    if (searchTerm === "") {
-        searchResultDiv.textContent = "Please enter a word to search.";
+function searchWord() {
+    const searchInput = document.getElementById('search-input').value.trim();
+    const resultOutput = document.getElementById('result-output');
+    const resultErrorMsg = document.getElementById('result-error-msg');
+
+    resultOutput.innerHTML = "";
+    resultErrorMsg.textContent = ""; 
+
+    if (searchInput === "") {
+        resultErrorMsg.textContent = "Please enter a word to search.";
         return;
     }
-    const foundWord = dictionary.find(entry => entry.word.toLowerCase() === searchTerm.toLowerCase());
 
+    const foundWord = dictionary.find(entry => entry.word.toLowerCase() === searchInput.toLowerCase());
     if (foundWord) {
-        searchResultDiv.innerHTML = `<span id="dictionary-keyword">${foundWord.word}</span>: ${foundWord.description}`;
+        const wordSpan = document.createElement("span");
+        wordSpan.textContent = foundWord.word;
+        resultOutput.appendChild(wordSpan);
+        resultOutput.appendChild(document.createTextNode(`: ${foundWord.description}`));
     } else {
-        searchResultDiv.textContent = "The word is not found in the dictionary.";
+        resultErrorMsg.textContent = "Word not found.";
     }
-    searchInput.value = '';
+
+    document.getElementById('search-input').value = "";
 }

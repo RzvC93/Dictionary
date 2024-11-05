@@ -13,110 +13,107 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     min-height: 100%;
     box-sizing: border-box;
 }
 
-#scroll-container {
-    max-height: 300px; 
-    min-width: 700px;
-    overflow-y: auto;   
-    /*border: 5px solid #ccc; */
-    padding: 10px;
-}
-
-
-/* Stiluri pentru card-uri */
-.add-word-card, .dictionary-display, .search-card, .search-result-card {
+/* General styling for cards */
+.add-card, .word-card, .search-card, .result-card {
     background-color: #d6e3f2;
     box-shadow: 0 14px 14px rgb(171, 186, 231);
     margin-bottom: 30px;
     width: 100%;
-    max-width: 1000px; 
-    min-width: 300px; 
+    max-width: 700px;
+    min-width: 300px;
 }
 
-/* Stiluri pentru card-body-uri */
-.add-word-card-body, .search-card-body, .dictionary-display-card-body, .search-result-card-body {
+/* Card content */
+.card-body {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
 }
 
-/* Stiluri pentru hr */
-#word-definition-title-hr, #add-word-title-hr, #dictionary-entries-title-hr, #search-result-title-hr {
+/* Dividers */
+#title-divider, #add-divider, #word-list-divider, #result-divider {
     border: 0;
-    border-top: 3px solid black; 
+    border-top: 3px solid black;
     margin-bottom: 20px;
     width: 100%;
 }
 
-/* Stiluri pentru h1 */
-#word-definition-title, #add-word-title, #dictionary-entries-title, #search-result-title {
+/* Titles*/
+#main-title, #add-title, #word-list-title, #result-title {
     text-align: center;
-    width: 100%;
     margin: 0 auto;
 }
 
-/* Stiluri pentru input și textarea */
-.input-key-word, .input-explanation {
+/* Input fields */
+.input-word, .input-desc, #search-input {
     width: 100%;
-    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
     margin-bottom: 10px;
 }
 
-/* Stiluri pentru butoane */
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    text-align: center;
-}
-
-button:hover {
-    background-color: #2391e6;
-    cursor: pointer;
-}
-
-#dictionary-keyword {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-/* Stiluri pentru search input */
-#dictionar-search {
-    width: 100%;
-    padding: 5px;
-    border-radius: 8%;
-    margin-right: 10px;
-    background-color: rgb(202, 214, 219);
-}
-
-#dictionar-search::placeholder {
+/* Placeholder */
+#search-input::placeholder, .input-word::placeholder, .input-desc::placeholder {
     font-weight: bold;
     color: #888;
 }
 
-/* Stiluri responsive */
+/* Error messages */
+.error-msg {
+    color: rgb(110, 42, 42);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+/* Button styling */
+.button-group {
+    text-align: center;
+    width: 100%; 
+}
+
+#btn-add, 
+#btn-search {
+    width: 40%; 
+    margin: 0 auto; 
+    display: block; 
+    padding: 10px; 
+    background-color: #6c757d; 
+    color: white; 
+    border-radius: 10px; 
+    text-align: center;
+}
+
+#btn-add:hover, 
+#btn-search:hover {
+    background-color: #2391e6;
+    cursor: pointer;
+}
+
+/* List display */
+#word-list span, #result-output span {
+    font-weight: bold;
+}
+
+/* Responsive styling */
 @media (max-width: 600px) {
-    .add-word-card-body, .search-card-body, .dictionary-display-card-body {
-        flex-direction: column;
+    .card-body {
         align-items: flex-start;
         justify-content: center;
     }
-
-    #dictionar-search {
+    #search-input {
         width: 100%;
         margin-bottom: 10px;
     }
-
     button {
         width: 100%;
-        text-align: center;
     }
 }
