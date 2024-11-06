@@ -44,7 +44,6 @@ function searchWord() {
     const searchInput = document.getElementById('search-input').value.trim();
     const resultOutput = document.getElementById('result-output');
     const resultErrorMsg = document.getElementById('result-error-msg');
-
     resultOutput.innerHTML = "";
     resultErrorMsg.textContent = ""; 
 
@@ -53,7 +52,8 @@ function searchWord() {
         return;
     }
 
-    const foundWord = dictionary.find(entry => entry.word.toLowerCase() === searchInput.toLowerCase());
+    const foundWord = dictionary.find
+    (entry => entry.word.toLowerCase() === searchInput.toLowerCase());
     if (foundWord) {
         const wordSpan = document.createElement("span");
         wordSpan.textContent = foundWord.word;
