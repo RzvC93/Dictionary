@@ -53,7 +53,9 @@ function searchWord() {
     }
 
     const foundWord = dictionary.find(
-        entry => entry.word.toLowerCase() === searchInput.toLowerCase());
+        entry => entry.word.toLowerCase() === searchInput.toLowerCase()
+    );
+    
     if (foundWord) {
         const wordSpan = document.createElement("span");
         wordSpan.textContent = foundWord.word;
